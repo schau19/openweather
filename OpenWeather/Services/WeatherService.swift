@@ -33,7 +33,7 @@ class WeatherService: WeatherServicing {
             completion(.failure(WeatherServiceError.invalidInput))
             return
         }
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(cityEncoded)&units=imperial&appid=40e731d1ba45b59efaab08921626196b"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(cityEncoded)&units=imperial"
         guard let url = URL(string: urlString) else {
             completion(.failure(WeatherServiceError.invalidUrl))
             return
@@ -60,7 +60,7 @@ class WeatherService: WeatherServicing {
     
     public func getGeoFor(cLLocation: CLLocation,
                           completion: @escaping ((Result<[GeolocationResponseModel], Error>) -> Void) ) {
-        let urlString = "http://api.openweathermap.org/geo/1.0/reverse?lat=\(cLLocation.coordinate.latitude)&lon=\(cLLocation.coordinate.longitude)&limit=5&appid=40e731d1ba45b59efaab08921626196b"
+        let urlString = "http://api.openweathermap.org/geo/1.0/reverse?lat=\(cLLocation.coordinate.latitude)&lon=\(cLLocation.coordinate.longitude)&limit=5"
         guard let url = URL(string: urlString) else {
             completion(.failure(WeatherServiceError.invalidUrl))
             return
